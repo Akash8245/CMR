@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSCS</title>
+    <!-- <link rel="stylesheet" href="./styleschool.css">
+    <link rel="stylesheet" href="./hostel.css"> -->
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            position: sticky;
+            top: 0px;
+            background-color: #5b98d5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            z-index: 10;
+        }
+        nav img{
+           margin:10px ;
+        }
+        nav ul{
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 34px;
+            margin-right: 20px;
+        }
+        nav ul li{
+            list-style: none;
+            font-size: 20px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+        .navigations{
+            background-color: rgb(222 222 222);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                    position: sticky;
+                    top: 54px;
+                    z-index: 1000;
+        }
+        .nav-item {
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            color: black;
+            cursor: pointer;
+        }
+        .nav-item .abbu a{
+            color: black;
+            text-decoration: none;
+        }
+        .nav-item a{
+            color: white;
+            text-decoration: none;
+        }
+        .nav-item a:hover{
+            text-decoration: underline;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+        
+        }
+        .dropdown li {
+            padding: 10px;
+            color: white;
+        }
+        .dropdown li:hover {
+            background-color: #555;
+            text-decoration: underline;
+        }
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+        
+        .nav-item a:hover{
+            text-decoration: underline;
+        }
+        .menu-btn {
+            display: none;
+            position: fixed;
+            top: 55px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 2000;
+        }
+        .menu-item .abbu a{
+            color: black;
+            text-decoration: none;
+        }
+        .menu-item a{
+            color: white;
+            text-decoration: none;
+        }
+        .menu-item a:hover{
+            text-decoration: underline;
+        }
+        .menu-item .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+        }
+        .menu-item .dropdown li {
+            padding: 10px;
+            color: white;
+        }
+        .dropdown li:hover {
+            background-color: #555;
+            text-decoration: underline;
+        }
+        .menu-item:hover .dropdown {
+            display: block;
+        }
+        
+        .menu-item a:hover{
+            text-decoration: underline;
+        }
+        .slide-menu {
+            display: none;
+            position: fixed;
+            top: 44px;
+            left: -350px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease-in-out;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 20;
+        }
+        .slide-menu.active {
+            left: 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            background: none;
+            border: none;
+        }
+        .menu-item {
+            top: 30px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .sub-menu {
+            display: none;
+            padding-left: 15px;
+            background: #f4f4f4;
+        }
+        .menu-item:hover .sub-menu {
+            display: block;
+        }
+        .aboutschool h2{
+            color: #00B6AD ;
+        }
+        .imgage img{
+            width: 100%;
+        }
+        .titleschool{
+            background-color: #2C3E50;
+            width: 100%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            margin: 5px 0px;
+        }
+        .aboutschool{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ECF0F1;
+            width: 100%;
+            height: 30px;
+            margin: 5px 0px;
+        }
+        .aboutschool ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .aboutschool ul li{
+            list-style:none;
+        }
+        .aboutschool ul li a{
+            color: black;
+            text-decoration: none;
+        }
+        .detailabout{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0px;
+            width: 100%;
+        }
+        .detailabout h2{
+            margin: 30px 0px;
+            color: #00B6AD;
+        }
+        .detailabout p{
+            width: 700px;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: lighter;
+        }
+        .widthdetail{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 0px;
+            width: 100%;
+            background-color: #ECF0F1;
+        }
+        .fixeddiv{
+            width: 200px;
+            position: fixed;
+            right: 0px;
+            z-index: 1100;
+            top: 52%;
+        }
+        .fixeddiv .fixedthings:nth-child(odd){
+            background-color: #05B1A7;
+            color: white;
+        }
+        .fixeddiv .fixedthings:nth-child(3){
+            background-color: #036059;
+            color: white;
+        }
+        .fixeddiv .fixedthings:nth-child(even){
+            background-color: #FF0;
+            color: black
+        }
+        .fixedthings{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+        .keyfeatures{
+            width: 700px;
+            line-height: 30px;
+            padding: 10px 0px
+        }
+        .keyfeatures h2{
+            color: #00B6AD;
+            margin: 30px 0px;
+        }
+        .keyfeatures p{
+            width: 700px;
+            font-size: 18px;
+            line-height: 40px;
+            font-weight: lighter;
+        }
+        .pogrammeugpg h2{
+            margin: 30px 0px;
+            color: #00B6AD;
+            text-decoration: underline dotted;
+        }
+        .pogrammeugpg{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .imageees{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+           grid-template-columns: 300px 300px  300px ;
+           grid-template-rows: 250px  250px  250px ;
+        }
+        .img1{
+            width: 500px;
+           
+        }
+        .imageees h3{
+            width: 300px;
+        }
+        .imageees a{
+            color: #2C3E50;
+            text-decoration: none;
+        }
+        .imageees a:hover{
+            text-decoration: underline;
+        }
+        .ugpg{
+            display: flex;
+            gap: 30px;
+        }
+        .pogrammeugpg ul li{
+            list-style: none;
+            line-height: 30px;
+        }
+        .ugpg h3{
+            color:#2C3E50;
+            text-decoration: underline;
+            margin: 20px;
+            text-align: center;
+        }
+        .faculty h2{
+            margin: 30px 0px;
+            text-align: center;
+            color: #00B6AD;
+            text-decoration: underline dotted;
+        }
+        .faculty{
+            margin: 30px 0px;
+            display: flex;
+            background-color: #ECF0F1;
+            flex-direction: column;
+        }
+        .faculty ul li{
+            text-decoration: none;
+            cursor: pointer;
+            list-style: none;
+            line-height: 50px;
+        }
+        .facdetails{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        .dwonbroucher{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .Download{
+            background-color: #00B6AD;
+            width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0px;
+            cursor: pointer;
+        }
+        .Download a{
+            color: white;
+            text-decoration: none;
+        }
+        footer{
+            display: flex;
+            justify-content: center;
+            background-color: #40474D;
+            color: white;
+            gap: 18px;
+        }
+        footer ul{
+            margin-left: 30px;
+        }
+        footer ul h3{
+            color: #ead722;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        footer ul li{
+            list-style: none;
+            font-weight: lighter;
+            margin: 30px 10px;
+        }
+        footer img{
+            width: 30px;
+            margin-top: -20px;
+        }
+        footer h4{
+            margin-top: 0px;
+        }
+        footer ul a{
+            color: white;
+            text-decoration: none;
+        }
+        footer ul a:hover{
+            text-decoration: underline;}
+        @media only screen and (max-width: 850px ){
+            .navigations{
+                display: none;
+            }
+            nav div{
+                display: none;
+            }
+            nav ul li{
+                font-size: 12px;
+                gap: 10px;
+            }
+            .detailabout p{
+                width: 90%;
+            }
+            .keyfeatures{
+                width: 97%;
+                padding-left: 5px;
+            }
+            .keyfeatures p{
+                width: 98%;
+            }
+        }
+        @media only screen and (max-width: 1065px ){
+            .facdetails{
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media only screen and (max-width: 790px ){
+            nav img{
+                width: 30px;
+            }
+            .ugpg{
+                flex-direction: column;
+            }
+            footer{
+                font-size: 12px;
+            }
+            .navigations{
+                display: none;
+            }
+            .menu-btn{
+                display: block;
+            }
+            .slide-menu {
+                display: block;
+            }
+            nav ul li{
+                font-size: 14px;
+            }
+            nav img{
+                width: 70px;
+            }
+        }
+        
+        @media only screen and (max-width: 700px ){
+            .fixeddiv{
+                display: none;
+            }
+            nav div{display: none;}
+            nav ul li{
+                font-size: 12px;
+            }
+        }
+        
+        @media only screen and (max-width: 555px ){
+            nav ul li{
+                font-size: 09px;
+            }
+            nav ul {
+                gap: 7px;
+            }
+        }
+        
+        @media only screen and (max-width: 540px ){
+            footer{
+                flex-direction: column;
+            }
+        }
+        @media only screen and (max-width: 490px ){
+            footer ul{
+                margin-left: 0px;
+            }
+            footer ul li{
+                margin: 25px 0px;
+                margin-left: 10px;
+            }
+        }
+        
+        @media only screen and (max-width: 435px ){
+            nav ul li{
+                font-size: 10px;
+            }
+            nav ul {
+                gap: 7px;
+            }
+            .aboutschool{
+                font-size: 10px;
+            }
+            .aboutschool ul{
+                gap: 2px;
+            }
+            .detailabout p{
+                font-size: 10px;
+                line-height: 10px;
+            }
+            .keyfeatures p{
+                font-size: 10px;
+                line-height: 25px;
+            }
+            .faculty ul li{
+                font-size: 12px;
+            }
+            .ugpg{
+                font-size: 12px;
+            }
+            .ug{
+                text-align: center;
+            }
+            .detailabout h2{
+                margin: 10px 0px;
+                margin-top: 2px;
+            }
+            .slide-menu {
+                width: 80%;
+            }
+        }
+        .inform h4{
+            color: #2c3e50 ;
+            margin-bottom: 10px;
+        }
+        .inform{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 24px;
+            margin: 30px 0px;
+        }
+        .inform p{
+            width: 600px;
+        }
+        .inform ul{
+            width: 500px;
+            margin-left: 30px;
+            margin-top: 10px
+        }
+        @media only screen and (max-width: 740px ){
+            .inform{
+                width: 99%;
+                font-size:12px ;
+            }
+            .inform p{
+                width: 80%;
+            }
+            .inform ul{
+                width: 80%;
+            }
+            .raging{
+                text-align: center;
+            }
+        }
+        @media only screen and (max-width: 330px ){
+            nav ul li{
+                font-size: 8px;
+            }
+        }
+        @media only screen and (max-width: 280px ){
+            .aboutschool{
+                font-size: 8px;
+            }
+            nav ul li{
+                font-size: 6px;
+            }
+        }        
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="/static/cmrlogo.png" width="100" alt="cmlogo">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'event_list' %}">Events</a></li>
+            <li><a href="{% url 'student_login' %}">Student Login</a></li>
+            <li><a href="{% url 'teacher_login' %}">Staff Login</a></li>
+            <li><a href="/admin/">Admin Login</a></li>
+        </ul>
+        <div></div>
+    </nav>
+    <div class="navigations">
+        <div class="nav-item"><div class="abbu">About CMR <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./aboutus.html">About Us</a></li>
+                <li><a href="./schools.html">Schools</a></li>
+            </ul>
+        </div>
+        <div class="nav-item"><div class="abbu"><a href="{% url 'hostel' %}">Hostel</a></div>
+        </div>
+        <div class="nav-item"><div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html">School of Architecture</a></li>
+                <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+                <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+                <li><a href="./school_mgnt.html">School of Management</a></li>
+                <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+                <li><a href="./school_legal.html">School of Legal Studies</a></li>
+                <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+            </ul>
+        </div>
+        <div class="nav-item"><div class="abbu"><a href="./leadership.html">Leadership</a></div>
+        </div>
+      
+        <div class="nav-item"><div class="abbu">Faculty <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
+                <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
+                <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
+            </ul>
+        </div>
+        <div class="nav-item"><div class="abbu"><a href="{% url 'campus_map' %}">Campus Tour</a></div>
+        </div>
+        <div class="nav-item"><div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        </div>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="slide-menu" id="slideMenu">
+        <button class="close-btn" onclick="toggleMenu()">✖</button>
+            <div class="menu-item"><div class="abbu">About CMR <img src="/static/downarrow.svg" width="10" alt=""></div>
+                <ul class="dropdown">
+                    <li><a href="./aboutus.html">About Us</a></li>
+                    <li><a href="./schools.html">Schools</a></li>
+                </ul>
+            </div>
+            <div class="menu-item"><div class="abbu"><a href="{% url 'hostel' %}">Hostel</a></div>
+            </div>
+            <div class="menu-item"><div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
+                <ul class="dropdown">
+                    <li><a href="./school_arch.html">School of Architecture</a></li>
+                    <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+                    <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+                    <li><a href="./school_mgnt.html">School of Management</a></li>
+                    <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+                    <li><a href="./school_legal.html">School of Legal Studies</a></li>
+                    <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+                </ul>
+            </div>
+            <div class="menu-item"><div class="abbu"><a href="./leadership.html">Leadership</a></div>
+            </div>
+            <div class="menu-item"><div class="abbu">Faculty <img src="/static/downarrow.svg" width="10" alt=""></div>
+                <ul class="dropdown">
+                    <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
+                    <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
+                    <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
+                </ul>
+            </div>
+            <div class="menu-item"><div class="abbu"><a href="">Campus Tour</a></div>
+            </div>
+            <div class="menu-item"><div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+            </div>
+    </div>
+    <div class="imgage">
+        <img src="/static/Hostel-Page-cover-image.jpg" alt="">
+    </div>
+    <div class="titleschool">
+        HOSTEL
+    </div>
+    <div class="aboutschool">
+        <ul>
+            <li><a href="#accomodation">Accommodations |</a></li>
+            <li><a href="#features">Key Features |</a></li>
+            <li><a href="#programmes">Programmes |</a></li>
+            <li>
+                <a href="#faculty">Faculty |</a>
+            </li>
+            <li><a href="#download">Brocher |</a></li>
+        </ul>
+    </div>
+    <div class="fixeddiv">
+        <div class="fixedthings">
+            Apply Now
+        </div>
+        <div class="fixedthings">
+            Call Now
+        </div>
+        <div class="fixedthings">
+            Request Call Back
+        </div>
+        <div class="fixedthings">
+            Commencement
+        </div>
+    </div>
+    <div class="inform" id="accomodation">
+        <h4>STUDENT ACCOMMODATION</h4>
+        <p>At CMR University, we prefer calling our hostels as “Student Quarters” or “Student Accommodations”. These
+            play a vital role in the academic cycle of a student. Hence, our student quarters are aesthetically designed
+            to suit students’ needs for appropriate accommodation and place of study during their academic journey with
+            us. The student quarters are designed to ensure proper lighting and ventilation throughout the year, whilst
+            being spacious.
+
+        </p>
+        <p> The student quarters, separate for both boys and girl students, are managed by an exclusive Campus House
+            that also focuses on introducing newer facilities for students based on feedback. Along with this, the
+            Campus House also engages in:
+
+        </p>
+        <p> The main activities of Campus House are: <br>
+        <ul>
+            <li>Management of student accommodation, providing information and guidance regarding accommodation options.
+            </li>
+            <li>Kitchen operation and management.</li>
+            <li>Monitoring of students’ well-being whilst inculcating discipline.</li>
+            <li> To create and introduce new facilities and processes based on feedback from students.</li>
+        </ul>
+        </p>
+    </div>
+    <div class="inform">
+        <h4>ACCOMMODATION DETAILS</h4>
+        <p>Accommodation for boys and girls is provided separately with all modern amenities. Students are requested to
+            book their preferred location choice and type of accommodation in advance. Hostel rules have been framed
+            keeping in mind the local culture and traditions; with a view to guide and help students attain standards of
+            implacable conduct. Therefore, while residents enjoy maximum freedom, it is ensured that this is always
+            within the framework of standard guidelines and procedures.</p>
+    </div>
+    <div class="inform">
+        <h4>FACILITIES IN HOSTEL</h4>
+        <p>
+            CMR Group offers Hostel Facilities for students studying in CMRU and CMRIT. The hostel is located within the
+            campus and situated in the most happening place in Bangalore. Students staying in the hostel have access to
+            all the amenities.
+        </p>
+    </div>
+    <div class="inform">
+        <h4>TYPES OF ACCOMMODATION</h4>
+        <p>Students preferring accommodation at the hostels of CMR University can choose from the following
+            accommodation types, as per their needs and budget:
+        <ul>
+            <li> Single Occupancy</li>
+            <li> Double Occupancy</li>
+            <li> Triple Occupancy</li>
+            <li>Four sharing occupancy</li>
+        </ul>
+        </p>
+    </div>
+    <div class="inform">
+        <h4>FACILITIES</h4>
+        <p>
+        <ul>
+            <p>The hostels at CMR University are well equipped with latest amenities. These include:</p>
+
+            <li>Well-lit and ventilated rooms</li>
+            <li> Semi-furnished rooms</li>
+            <li> Student-friendly wardens</li>
+            <li> High-Speed Wi-Fi connectivity</li>
+            <li> CCTV cameras</li>
+            <li>TV with cable connection</li>
+            <li> 24 hrs. power backup</li>
+            <li> Biometrics for students’ attendance</li>
+            <li> Hostel management application – Students are mandated to download the app</li>
+            <li> 24/7 security in campus</li>
+            <li> Hi-tech kitchen with modern equipment</li>
+            <li> Provision of RO water for drinking</li>
+            <li> Fresh and nutritious food</li>
+            <li> Laundry facility</li>
+            <li> Indoor games</li>
+        </ul>
+        </p>
+    </div>
+    <div class="inform">
+        <h4>Re-admission to the Student Accommodations:</h4>
+        <p>
+        <ul>
+            <li>Wards should ensure at least 85% of attendance in the preceding academic year.</li>
+            <li>Academic performance of 60%, in the preceding academic sans backlogs.</li>
+            <li>Conduct certificate from the Dean/HOD/Program Coordinator.</li>
+        </ul>
+        </p>
+    </div>
+    <div class="inform raging">
+        <h4>Anti-Ragging policy:</h4>
+        <h4>“Ragging is prohibited and is a criminal offence”</h4>
+        <p>On curbing the menace of Ragging in hostels and campuses of Higher Educational Institutions, it is brought to
+            the notice of all the students that ragging is a criminal offence under UGC Regulations 2009. “Any conduct
+            whether by words spoken or written or by an act which causes or is likely to cause annoyance, hardship or
+            psychological harm to a student is ragging.” Ragging is completely prohibited in the hostel and on campus at
+            CMR University.</p>
+    </div>
+
+    <div class="dwonbroucher" id="download">
+        <div class="Download"><a href="./SOM-Flyer.pdf" download="C:\Users\moham\OneDrive\Desktop">Download Brocher</a></div>
+    </div>
+    <footer>
+        <ul>
+            <h3>CMR UNIVERSITY</h3>
+            <li><a href="./aboutus.html">About CMR</a></li>
+            <li><a href="./schools.html">Programmes</a></li>
+            <li><a href="./schools.html">Schools</a></li>
+            <li><a href="">Campus</a></li>
+            <li><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></li>
+        </ul>
+        <ul>
+            <h3>SCHOOLS & PROGRAMMES</h3>
+            <li><a href="./school_arch.html">School of Architecture</a></li>
+            <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+            <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+            <li><a href="./school_mgnt.html">School of Management</a></li>
+            <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+            <li><a href="./school_legal.html">School of Legal Studies</a></li>
+            <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+        </ul>
+        <ul>
+                <h3>ADMIN OFFICE</h3>
+                <li>#2, 3rd 'C' Cross, 6th 'A' Main</li>
+                <li>HRBR Layout, 2nd Block.</li>
+                <li>Kalyana Nagar,</li>
+                <li>
+                    <p>Bengaluru 560043, India</p>
+                </li>
+                <li>T: +91 8976543209</li>
+                <li>E: info@cmr.edu.in</li>
+                <li>
+                    <h4><a href="">Google Maps</a></h4>
+                </li>
+                <li>
+                    <h2>Follow us on</h2>
+                </li>
+                <li><img src="./whatsappimg.png" alt=""><img src="./instaimg.jpeg" alt=""><img src="./facebookimg.jpeg" alt=""></li>
+        </ul>
+    </footer>
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("slideMenu");
+            menu.classList.toggle("active");
+        }
+        document.addEventListener("click", function(event) {
+            let menu = document.getElementById("slideMenu");
+            let menuBtn = document.querySelector(".menu-btn");
+            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menu.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+
+</html>

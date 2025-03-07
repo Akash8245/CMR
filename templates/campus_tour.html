@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Campus Tour</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 500px; }
+        .tour-box { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Campus Tour Guide</h2>
+<input type="text" id="search-box" placeholder="Search building">
+
+<div id="map"></div>
+
+<div class="tour-box">
+    <h3>Guided Tour</h3>
+    <button onclick="startTour()">Start Tour</button>
+    <p id="tour-instructions"></p>
+</div>
+
+<script>
+    let map = L.map('map').setView([12.9716, 77.5946], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    let markers = {};
+    fetch('/api/buildings/')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(building => {
+                let marker = L.marker([building.latitude, building.longitude])
+                    .addTo(map)
+                    .bindPopup(`<b>${building.name}</b><br>${building.description}`);
+                markers[building.name.toLowerCase()] = marker;
+            });
+        });
+
+    // Search functionality
+    document.getElementById('search-box').addEventListener('input', function() {
+        let query = this.value.toLowerCase();
+        if (markers[query]) {
+            map.setView(markers[query].getLatLng(), 18);
+            markers[query].openPopup();
+        }
+    });
+
+    // Tour Guide Functionality
+    let tourSteps = [];
+    let currentStep = 0;
+
+    function startTour() {
+        fetch('/api/tour/')
+            .then(response => response.json())
+            .then(data => {
+                tourSteps = data;
+                currentStep = 0;
+                nextTourStep();
+            });
+    }
+
+    function nextTourStep() {
+        if (currentStep < tourSteps.length) {
+            let step = tourSteps[currentStep];
+            document.getElementById('tour-instructions').innerText = step.instructions;
+            let marker = markers[step["building__name"].toLowerCase()];
+            if (marker) {
+                map.setView(marker.getLatLng(), 18);
+                marker.openPopup();
+            }
+            currentStep++;
+            setTimeout(nextTourStep, 5000);  // Move to next step after 5 sec
+        } else {
+            document.getElementById('tour-instructions').innerText = "Tour Completed!";
+        }
+    }
+</script>
+
+</body>
+</html>

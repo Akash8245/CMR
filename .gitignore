@@ -1,0 +1,63 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+*.sqlite3
+
+# If using MySQL or PostgreSQL
+*.pgdata
+*.mysql
+db.sqlite3
+
+# If using environment variables
+.env
+*.env
+
+# VS Code and IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Django migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/*_initial.py
+
+# Byte-compiled files
+__pycache__/
+
+# Node.js (if using frontend with Django)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Cache files
+*.cache
+*.mo
+*.swp
+*.swo
+
+# Compiled code
+*.class
+*.o
+*.so
+*.dll
+*.exe
+
+# Render, Vercel, and other hosting-related files (if applicable)
+.render/
+.vercel/

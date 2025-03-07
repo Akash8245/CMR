@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .header {
+            background: #01B0A9;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            padding: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .profile-info strong {
+            color: #01B0A9;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #01B0A9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #018f89;
+        }
+
+        .btn-secondary {
+            background-color: #EAD722;
+            color: black;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbb518;
+        }
+
+        .events-section {
+            margin-top: 30px;
+        }
+
+        .event-card {
+            display: flex;
+            align-items: center;
+            background: #f4f4f4;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #01B0A9;
+        }
+
+        .event-date {
+            font-size: 16px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .event-description {
+            font-size: 14px;
+            color: #444;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Student Dashboard</div>
+
+    <div class="container">
+        <div class="profile-info">
+            <h2>Welcome, {{ student.username }}</h2>  
+            <p><strong>Email:</strong> {{ student.email }}</p>  
+            <p><strong>Age:</strong> {{ student.age }}</p>  
+            <p><strong>Branch:</strong> {{ student.branch }}</p>  
+        </div>
+
+        <div class="buttons">
+            <a href="{% url 'submit_review' %}" class="btn btn-primary">Give Review</a>  
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>  
+        </div>
+
+        <!-- Events Section -->
+        <div class="events-section">
+            <h2>Upcoming Events</h2>
+            {% if upcoming_events %}
+                {% for event in upcoming_events %}
+                    <div class="event-card">
+                        <img src="{{ event.image.url }}" alt="Event Image" class="event-image">
+                        <div class="event-details">
+                            <div class="event-title">{{ event.title }}</div>
+                            <div class="event-date">{{ event.date|date:"F j, Y" }}</div>
+                            <div class="event-description">{{ event.description }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No upcoming events.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2025 CMR University. All rights reserved.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Navbar</title>
+    <meta charset="UTF-8">
+    <title>Interactive Campus Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        #map {
+            height: 470px;
+            width: 100%;
+        }
+
+        #controls {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        select,
+        button,
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #01B0A9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #EAD722;
+            color: black;
+        }
+
+        .btn {
+            background-color: #EAD722;
+            color: black;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: #01B0A9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Kristu Jayanti Collage</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'student_login' %}">Student Login</a></li>
+            <li><a href="{% url 'teacher_login' %}">Teacher Login</a></li>
+            <li><a href="{% url 'student_profile' %}">Profile</a></li>
+            <li><a href="/admin/" class="btn">Admin Page</a></li>
+        </ul>
+    </nav>
+
+        <br>
+        <br>
+        <h2>Campus Map</h2>
+        <br>
+        <br>
+        <div id="map"></div>
+    
+        <div id="controls">
+            <label for="search">Search Facility:</label>
+            <input type="text" id="search" placeholder="Enter facility name" onkeyup="debounceSearch()">
+            <select id="facility-list" onchange="locateFacility()"></select>
+    
+            <br>
+    
+            <label for="start">Start:</label>
+            <select id="start"></select>
+    
+            <label for="end">End:</label>
+            <select id="end"></select>
+    
+            <button onclick="getDirections()">Get Directions</button>
+        </div>
+    
+        <script>
+            var map = L.map('map', {
+                center: [13.058604, 77.642558],
+                zoom: 21,
+                zoomControl: false
+            });
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+    
+            var locations = {
+                "Main Gate": [13.058477, 77.643148],
+                "Admin Block": [13.058717, 77.642074],
+                "KJC UG Block": [13.058292, 77.642705],
+                "KJC PG Block": [13.058128, 77.642214],    
+                "KJC Cafeteria": [13.058286, 77.643294],
+                "KJC Security Room": [13.059255, 77.642685],
+                "KJC Ground": [13.058766, 77.642495],
+                "Parking" : [13.059099, 77.642829],
+            };
+    
+            var markerLayer = L.layerGroup().addTo(map);
+            var markers = {};
+    
+            function addMarkers() {
+                markerLayer.clearLayers();
+                for (let place in locations) {
+                    let marker = L.marker(locations[place])
+                        .bindPopup(`<b>${place}</b>`);
+                    markerLayer.addLayer(marker);
+                    markers[place] = marker;
+                }
+            }
+            addMarkers();
+    
+            var startSelect = document.getElementById("start");
+            var endSelect = document.getElementById("end");
+            var facilityList = document.getElementById("facility-list");
+    
+            function populateDropdowns() {
+                let fragment = document.createDocumentFragment();
+                for (let place in locations) {
+                    let option1 = new Option(place, place);
+                    let option2 = new Option(place, place);
+                    let option3 = new Option(place, place);
+                    fragment.appendChild(option1);
+                    startSelect.appendChild(option2);
+                    endSelect.appendChild(option3);
+                }
+                facilityList.appendChild(fragment);
+            }
+            populateDropdowns();
+    
+            var routingControl;
+            var lastStart = null, lastEnd = null;
+    
+            function getDirections() {
+                var startPlace = startSelect.value;
+                var endPlace = endSelect.value;
+    
+                if (!startPlace || !endPlace || startPlace === endPlace) return;
+                if (startPlace === lastStart && endPlace === lastEnd) return;
+    
+                lastStart = startPlace;
+                lastEnd = endPlace;
+    
+                if (routingControl) {
+                    map.removeControl(routingControl);
+                }
+    
+                routingControl = L.Routing.control({
+                    waypoints: [
+                        L.latLng(locations[startPlace]),
+                        L.latLng(locations[endPlace])
+                    ],
+                    routeWhileDragging: false,
+                    createMarker: function() { return null; }, // Disable markers for the route
+                    router: L.Routing.osrmv1({
+                        serviceUrl: 'https://router.project-osrm.org/route/v1', // OSRM public service URL
+                        // profile: 'foot', // Use the 'foot' profile for pedestrian routing
+                        // extraParameters: {
+                        //     avoid: 'highways' // Avoid highways (non-pedestrian paths)
+                        // }
+                    })
+                }).addTo(map);
+            }
+    
+            function locateFacility() {
+                var selectedFacility = facilityList.value;
+                if (selectedFacility) {
+                    map.setView(locations[selectedFacility], 22);
+                    markers[selectedFacility].openPopup();
+                }
+            }
+    
+            let debounceTimer;
+            function debounceSearch() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(searchFacility, 300);
+            }
+    
+            function searchFacility() {
+                var input = document.getElementById("search").value.toLowerCase();
+                var options = facilityList.options;
+                for (var i = 0; i < options.length; i++) {
+                    options[i].style.display = options[i].text.toLowerCase().includes(input) ? "" : "none";
+                }
+            }
+    
+            L.Control.geocoder({
+                defaultMarkGeocode: false
+            }).on('markgeocode', function (e) {
+                map.setView(e.geocode.center, 22);
+            }).addTo(map);
+        </script>
+    
+</body>
+
+</html>

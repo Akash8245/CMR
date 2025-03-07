@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        nav {
+            position: sticky;
+            top: 0px;
+            background-color: #5b98d5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            z-index: 10;
+        }
+
+        nav img {
+            margin: 10px;
+        }
+
+        nav ul {
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 34px;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            list-style: none;
+            font-size: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navigations {
+            background-color: rgb(222 222 222);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 54px;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .nav-item .abbu a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-item a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+
+        }
+
+        .dropdown li {
+            padding: 10px;
+            color: white;
+        }
+
+        .dropdown li:hover {
+            background-color: #555;
+            text-decoration: underline;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .nav-item a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-btn {
+            display: none;
+            position: fixed;
+            top: 55px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 2000;
+        }
+
+        .menu-item .abbu a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .menu-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-item a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-item .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+        }
+
+        .menu-item .dropdown li {
+            padding: 10px;
+            color: white;
+        }
+
+        .dropdown li:hover {
+            background-color: #555;
+            text-decoration: underline;
+        }
+
+        .menu-item:hover .dropdown {
+            display: block;
+        }
+
+        .menu-item a:hover {
+            text-decoration: underline;
+        }
+
+        .slide-menu {
+            display: none;
+            position: fixed;
+            top: 44px;
+            left: -350px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease-in-out;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 20;
+        }
+
+        .slide-menu.active {
+            left: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            background: none;
+            border: none;
+        }
+
+        .menu-item {
+            top: 30px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 15px;
+            background: #f4f4f4;
+        }
+
+        .menu-item:hover .sub-menu {
+            display: block;
+        }
+
+        .whycmr {
+            margin: 40px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            gap: 20px;
+            border-radius: 10px;
+            box-shadow: gray 2px 2px 27px 1px;
+        }
+
+        .details {
+            margin: 20px 10px;
+        }
+
+        .details p {
+            width: 500px;
+            margin-top: 5px;
+        }
+
+        .details h2 {
+            color: #05B1A7;
+        }
+
+        .whycmr img {
+            margin-right: 10px;
+            width: 500px;
+            height: 400px;
+        }
+
+        .aboutcmr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .icon4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icons {
+            width: 300px;
+            height: 270px;
+            background-color: #05B1A7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icons img {
+            margin: 20px 0px;
+        }
+
+        .icons h2 {
+            height: 40px;
+        }
+
+        .icons p {
+            margin-top: 20px;
+            height: 190px;
+            width: 220px;
+            text-align: center;
+        }
+
+        .iconimg {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .fixeddiv {
+            width: 200px;
+            position: fixed;
+            right: 0px;
+            z-index: 1100;
+            top: 52%;
+        }
+
+        .fixeddiv .fixedthings:nth-child(odd) {
+            background-color: #05B1A7;
+            color: white;
+        }
+
+        .fixeddiv:nth-child(even) {
+            background-color: #FF0;
+            color: black
+        }
+
+        .fixeddiv .fixedthings:nth-child(3) {
+            background-color: #036059;
+            color: white;
+        }
+
+        .fixedthings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .cmrlife {
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            width: 570px;
+            height: 450px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cmrlife img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        .slide-out {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .slide-in {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .cmrlifestyle {
+            background-color: #ead722;
+            width: 415px;
+            display: flex;
+            position: relative;
+            right: 25px;
+            border-radius: 10px;
+            padding: 0px 10px;
+            height: 400px;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cmrlifestyle h1 {
+            margin-bottom: 10px
+        }
+
+        .cmrsty {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid rgb(193, 190, 190);
+        }
+
+        .arrow img {
+            width: 40px;
+        }
+
+        .exploreschool {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .explore {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 400px;
+            background-color: #EAF9F7;
+        }
+
+        .exploreour {
+            border-radius: 20px;
+            width: 400px;
+            background-color: #05B1A7;
+            padding: 0px 10px;
+            margin-left: 10px;
+        }
+
+        .exploreour h1 {
+            margin: 10px 0px;
+        }
+
+        .exploreour p {
+            margin-bottom: 20px;
+        }
+
+        .exploreour .arrow {
+            margin-bottom: 20px;
+        }
+
+        .listss ul li {
+            list-style: none;
+            gap: 10px;
+            line-height: 40px;
+            margin: 10px 0px;
+            padding-left: 5px;
+        }
+
+        .listss {
+            margin: 0px 10px;
+        }
+
+        .listss ul li:nth-child(even) {
+            border-left: 2px solid #ead722;
+        }
+
+        .listss ul li:nth-child(odd) {
+            border-left: 2px solid #05B1A7;
+        }
+
+        .recuirters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0px;
+        }
+
+        .recuirt {
+            background-color: #05B1A7;
+            width: 610px;
+            height: 425px;
+            position: relative;
+        }
+
+        .liimg {
+            background-color: #ead722;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recuirt li {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+            font-size: 20px;
+            margin: 30px 20px;
+            color: white;
+        }
+
+        .recuirt h1 {
+            margin: 10px 20px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .recimg img {
+            height: 423px;
+        }
+
+        .admissionopen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admissionopen img {
+            width: 480px;
+        }
+
+        .detailopen {
+            width: 450px;
+        }
+
+        .paradmission {
+            font-weight: 700;
+            color: #05B1A7;
+        }
+
+        .detailopen h1 {
+            color: rgb(44, 44, 44);
+            margin-bottom: 10px;
+        }
+
+        .detailopen .detaillyop {
+            font-size: 15px;
+            font-weight: lighter;
+        }
+
+        .detailopen .btnn {
+            padding: 10px 50px;
+            background-color: #ead722;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+            margin-top: 40px;
+            cursor: pointer;
+        }
+
+        .btnn a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .testimonals {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 30px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimoa {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .detailtestimonals h1 {
+            margin: 10px 0px;
+            font-size: 20px;
+            color: #05B1A7;
+        }
+
+        .testimo {
+            text-align: center;
+            margin: 20px 0px;
+            font-size: 35px;
+            font-weight: 900;
+        }
+
+        .detailtestimonals img {
+            margin: 10px 0px;
+            border-radius: 50%;
+        }
+
+        .detailtestimonals {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            background-color: #DBF5F1;
+        }
+
+        .detailtestimonals p {
+            margin: 10px 0px;
+            text-align: center;
+            width: 550px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+
+            background-color: #40474D;
+            color: white;
+            gap: 18px;
+        }
+
+        footer ul {
+            margin-left: 30px;
+        }
+
+        footer ul h3 {
+            color: #ead722;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        footer ul li {
+            list-style: none;
+            font-weight: lighter;
+            margin: 30px 10px;
+        }
+
+        footer img {
+            width: 30px;
+            margin-top: -20px;
+        }
+
+        footer h4 {
+            margin-top: 0px;
+        }
+
+        footer ul a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer ul a:hover {
+            text-decoration: underline;
+        }
+
+        @media only screen and (max-width: 1050px) {
+            .whycmr {
+                flex-direction: column-reverse;
+                border: none;
+                box-shadow: none;
+            }
+
+            .details h2 {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .cmrlife img {
+                width: 420px;
+                height: 300px
+            }
+
+            .cmrlifestyle {
+                height: 280px;
+                width: 385px;
+                right: 80px;
+            }
+
+            .recuirt {
+                width: 500px;
+            }
+
+            .admissionopen {
+                flex-direction: column;
+            }
+
+            .detailopen {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 90%;
+            }
+
+            .icons {
+                width: 235px;
+            }
+        }
+
+        @media only screen and (max-width: 900px) {
+            .icon4 {
+                display: grid;
+                grid-template-columns: 265px 265px;
+                grid-template-rows: 285px 285px;
+            }
+
+            .whycmr {
+                width: 90%;
+            }
+
+            .explore {
+                width: 600px;
+            }
+
+            .recuirters {
+                flex-direction: column;
+            }
+
+            .recimg img {
+                width: 500px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+        @media only screen and (max-width: 790px) {
+            .explore {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .testimonals {
+                width: 600px;
+            }
+
+            .cmrlife {
+                width: 394px;
+                height: 300px;
+                margin-bottom: 0px;
+            }
+
+            .cmrsty {
+                flex-direction: column;
+            }
+
+            .cmrlifestyle {
+                right: 0px;
+                margin-top: 0px;
+                margin-bottom: 35px;
+            }
+
+            .fixeddiv {
+                display: none;
+            }
+
+            .navigations {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .slide-menu {
+                display: block;
+            }
+
+            nav ul li {
+                font-size: 14px;
+            }
+
+            nav img {
+                width: 70px;
+            }
+
+            .details {
+                width: 100%;
+                margin-top: -25px;
+            }
+
+            .whycmr img {
+                width: 80%;
+                height: 200px;
+                margin-right: 0px;
+            }
+
+            .details p {
+                width: 100%;
+                font-size: 11px;
+            }
+
+            .icon4 {
+                margin-left: 0px;
+            }
+        }
+
+        @media only screen and (max-width: 630px) {
+
+            .detailtestimonals p {
+                width: 400px;
+            }
+
+            nav ul li {
+                font-size: 12px;
+            }
+
+            nav div {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 510px) {
+            .icon4 {
+                grid-template-columns: none;
+                grid-template-rows: repeat(4, 270px)
+            }
+
+            .icons {
+                font-size: 15px;
+
+            }
+
+            footer {
+                font-size: 20px;
+                flex-direction: column;
+            }
+
+            .recuirt li {
+                font-size: 16px;
+            }
+
+            .recuirt {
+                max-width: 95%;
+            }
+
+            .recimg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .recimg img {
+                width: 95%;
+            }
+
+            .detailopen h1 {
+                text-align: center;
+            }
+
+            .exploreour {
+                width: 90%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li {
+                font-size: 10px;
+            }
+
+            .cmrlife {
+                margin-bottom: -30px;
+            }
+        }
+
+        @media only screen and (max-width: 490px) {
+            .recuirt {
+                width: 95%;
+                font-size: 12px;
+            }
+
+            .admissionopen img {
+                width: 90%;
+            }
+
+            .detailopen .detaillyop {
+                width: 90%;
+            }
+
+            .testimonals {
+                width: 90%;
+            }
+
+            footer ul {
+                margin-left: 0px;
+            }
+
+            footer ul li {
+                margin: 25px 0px;
+                margin-left: 10px;
+            }
+        }
+
+        @media only screen and (max-width: 430px) {
+            nav ul li {
+                font-size: 6px;
+            }
+
+            nav ul {
+                gap: 8px
+            }
+
+            .testimonals p {
+                width: 90%;
+            }
+
+            .details {
+                width: 90%;
+            }
+
+            .details p {
+                width: 100%;
+            }
+
+            .whycmr img {
+                width: 90%;
+            }
+
+            .cmrlife img {
+                width: 100%;
+                height: 250px
+            }
+
+            .cmrlifestyle {
+                width: 90%;
+            }
+
+            .cmrlife {
+                width: 90%;
+            }
+
+            .recuirt {
+                height: auto;
+            }
+
+            .slide-menu {
+                width: 80%;
+            }
+        }
+
+        @media only screen and (max-width: 300px) {
+            footer {
+                font-size: 10px;
+            }
+
+            .detailopen .btnn {
+                padding: 10px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .details {
+                width: 90%;
+            }
+
+            .whycmr {
+                width: 90%;
+            }
+
+            .icons {
+                margin-left: -7px;
+                margin-right: 20px;
+                width: 95%;
+            }
+
+            .details {
+                width: 75%;
+            }
+
+            .whycmr {
+                width: 90%;
+            }
+
+            .whycmr img {
+                width: 90%;
+            }
+
+            .icons h2 {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="./cmrlogo.png" width="100" alt="cmlogo">
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="">Events</a></li>
+            <li><a href="./loginpage.html">Student Login</a></li>
+            <li><a href="./loginpage.html">Staff Login</a></li>
+            <li><a href="">Admin Login</a></li>
+        </ul>
+        <div></div>
+    </nav>
+    <div class="navigations">
+        <div class="nav-item">
+            <div class="abbu">About CMR <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./aboutus.html">About Us</a></li>
+                <li><a href="./schools.html">Schools</a></li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="./hostel.html">Hostel</a></div>
+        </div>
+        <div class="nav-item">
+            <div class="abbu">Schools <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html">School of Architecture</a></li>
+                <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+                <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+                <li><a href="./school_mgnt.html">School of Management</a></li>
+                <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+                <li><a href="./school_legal.html">School of Legal Studies</a></li>
+                <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="./leadership.html">Leadership</a></div>
+        </div>
+        <div class="nav-item">
+            <div class="abbu">Faculty <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
+                <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
+                <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="">Campus Tour</a></div>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="./">Profile</a></div>
+        </div>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="slide-menu" id="slideMenu">
+        <button class="close-btn" onclick="toggleMenu()">✖</button>
+        <div class="menu-item">
+            <div class="abbu">About CMR <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./aboutus.html">About Us</a></li>
+                <li><a href="./schools.html">Schools</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="./hostel.html">Hostel</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu">Schools <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html">School of Architecture</a></li>
+                <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+                <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+                <li><a href="./school_mgnt.html">School of Management</a></li>
+                <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+                <li><a href="./school_legal.html">School of Legal Studies</a></li>
+                <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="./leadership.html">Leadership</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu">Faculty <img src="./downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
+                <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
+                <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="">Campus Tour</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        </div>
+
+    </div>
+    <video src="./video.mp4" class="video" autoplay loop muted></video>
+    <div class="fixeddiv">
+        <div class="fixedthings">
+            Apply Now
+        </div>
+        <div class="fixedthings">
+            Call Now
+        </div>
+        <div class="fixedthings">
+            Request Call Back
+        </div>
+        <div class="fixedthings">
+            Commencement
+        </div>
+    </div>
+    <div class="aboutcmr" id="about">
+        <div class="whycmr">
+            <div class="details">
+                <h2>About Us</h2>
+                <p>
+                    CMR University Bengaluru, today ranks amongst the best private Universities in India. More than
+                    24000 students have benefitted from our extensive “student empowerment programme” where the focus is
+                    on cultivating thought leaders to contribute to society
+                    CMR University (CMRU), Bangalore is a private university in the state of Karnataka, established
+                    under the Act 45 of 2013. The University fosters creative communities where new ideas are nurtured,
+                    new discoveries made, and new creations shared. CMRU works with the vision “To nurture creative
+                    thinkers who will drive positive global change.” CMR University aims to promote and undertake the
+                    advancement of university education across a plethora of disciplines viz architecture, design,
+                    engineering, law, management, economics & commerce, social sciences & humanities, education, and
+                    science studies. The University also aims to equip students with the required skills and knowledge
+                    to pursue a successful career in their chosen field of study.
+                    We believe that creativity is the key competence required to excel in this complex world, which is
+                    why independent thinkers, product leaders, artists, designers and innovators are the need of the
+                    hour. Our students learn creative concepts and design thinking regardless of their area of study.
+                    Students are evaluated on the basis of real-life skills such as teamwork, presentation, research and
+                    initiative. CMR University Bangalore fosters creative communities, where new ideas can be nurtured,
+                    new discoveries can be made and new creations can be shared.
+                </p>
+            </div>
+            <img src="./img1-1.webp" alt="">
+        </div>
+    </div>
+    <div class="icon4">
+        <div class="icons" style="background-color: #05B1A7;">
+
+            <div class="iconimg">
+                <img src="./trophy.png" alt="">
+            </div>
+            <h2>Ranked #4</h2>
+            <p>CMR University School of Engineering and Technology ranked 4th amongst Top Engineering Institutes, by
+                Times All India Engineering Institutes Ranking Survey 2022.</p>
+        </div>
+        <div class="icons" style="background-color: #EAD722">
+            <div class="iconimg"><img src="./ratings.png" alt=""></div>
+            <h2>5 Star Ratings</h2>
+            <p>CMR University Bengaluru receives “5-star ratings” by Artificial Intelligence Registration and
+                Certification, U.K.</p>
+        </div>
+        <div class="icons" style="background-color: #05B1A7">
+            <div class="iconimg"><img src="./emergingicon.png" alt=""></div>
+            <h2>Emerging University</h2>
+            <p>CMR University Bengaluru awarded “Emerging University of the Year” by ASSOCHAM, New Delhi.</p>
+        </div>
+        <div class="icons" style="background-color: #EAD722">
+            <div class="iconimg"><img src="./rank.png" alt=""></div>
+            <h2>Ranked #6</h2>
+            <p>6th Among Best State Private Universities & South Zone By IIRF.</p>
+        </div>
+    </div>
+    <div class="cmrsty">
+        <div class="cmrlife">
+            <img id="slider" src="./CMRU-OMBR-CAMPUS-1.webp" alt="">
+        </div>
+        <div class="cmrlifestyle">
+            <h1>Our Campus</h1>
+            <p>Easily accessible from Bellary Road, the 60-acre lakefront campus of CMR University in North Bengaluru is
+                beautifully designed to give a great learning experience to its students, both inside as well as outside
+                the classroom.</p>
+            <div class="arrow">
+                <img src="./arrow-right-02-stroke-rounded (1).svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="exploreschool">
+        <div class="explore">
+            <div class="exploreour">
+                <h1>Explore Our Schools</h1>
+                <p>With world-class faculty, globally benchmarked curricula, innovative teaching, exclusive training
+                    programmes, research methods, and a transparent placement process, the schools create a balanced
+                    amalgamation of different pursuits, offering undergraduate, postgraduate, and doctoral programmes to
+                    aspirants.</p>
+                <div class="arrow">
+                    <img src="./arrow-right-02-stroke-rounded (1).svg" alt="">
+                </div>
+            </div>
+            <div class="listss">
+                <h2>Browse by Schools</h2>
+                <ul>
+                    <li>School of Architecture</li>
+                    <li>School of Economics and Commerce</li>
+                    <li>School of Engineering and Technology</li>
+                    <li>School of Management</li>
+                    <li>School of Science & Computer Studies</li>
+                    <li>School of Legal Studies
+                    </li>
+                </ul>
+            </div>
+            <div class="listss">
+                <ul>
+                    <li>School of Liberal Studies</li>
+                    <li>School of Design</li>
+                    <li>Centre for English & Foreign
+                        Languages</li>
+                    <li>Makerspaces</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="recuirters">
+        <div class="recuirt">
+            <h1>Placement at CMR</h1>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt=""></div>200+ Recruiters
+            </li>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt=""></div>Pre-Placement Modules
+                From First Semester
+            </li>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt=""></div>Focus on employability
+            </li>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt=""></div>Emphasis on Experiential
+                learning
+            </li>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt=""></div>Extensive focus on
+                Internships
+            </li>
+            <li>
+                <div class="liimg"><img src="./arrow-right-01-stroke-rounded.svg" alt="" width="18"></div>Training for
+                competitive examinations - CAT, GRE, TOEFL, CMAT, Bank PO, and more.
+            </li>
+        </div>
+        <div class="recimg">
+            <img src="./campusrecuirt.png" alt="">
+        </div>
+    </div>
+    <div class="admissionopen">
+        <img src="./admission-open.webp" alt="">
+        <div class="detailopen">
+            <p class="paradmission">Admission Process</p>
+            <h1>Admissions Open AY 2025-26</h1>
+            <p class="detaillyop">CMR University provides a rigorous, academically-enriching experience. Admissions for
+                the academic year 2025-26 are currently open.
+                Gift yourself a fulfilling, global education that propels you towards your dream career. Complete the
+                online application today!s</p>
+            <div class="btnn"><a href="./SOM-Flyer.pdf" download="C:\Users\moham\OneDrive\Desktop">Download Brocher</a>
+            </div>
+        </div>
+    </div>
+    <h1 class="testimo">Testimonals</h1>
+    <div class="testimoa">
+        <div class="testimonals">
+            <div class="detailtestimonals" id="testimonial">
+                <img src="./testimonalspic.webp" alt="">
+                <h1>YOGESHKUMAR R</h1>
+                <p>MBA - HR, <b>BYJU's</b></p>
+                <p>"I have received an opportunity to meet different kinds of people and learn a number of things.I am
+                    thankful to the Training & Placement cell for providing a platform to enhance my skills and an
+                    opportunity to showcase them."</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <h3>CMR UNIVERSITY</h3>
+            <li><a href="./aboutus.html">About CMR</a></li>
+            <li><a href="./schools.html">Programmes</a></li>
+            <li><a href="./schools.html">Schools</a></li>
+            <li><a href="">Campus</a></li>
+            <li><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></li>
+        </ul>
+        <ul>
+            <h3>SCHOOLS & PROGRAMMES</h3>
+            <li><a href="./school_arch.html">School of Architecture</a></li>
+            <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
+            <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
+            <li><a href="./school_mgnt.html">School of Management</a></li>
+            <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
+            <li><a href="./school_legal.html">School of Legal Studies</a></li>
+            <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+        </ul>
+        <ul>
+                <h3>ADMIN OFFICE</h3>
+                <li>#2, 3rd 'C' Cross, 6th 'A' Main</li>
+                <li>HRBR Layout, 2nd Block.</li>
+                <li>Kalyana Nagar,</li>
+                <li>
+                    <p>Bengaluru 560043, India</p>
+                </li>
+                <li>T: +91 8976543209</li>
+                <li>E: info@cmr.edu.in</li>
+                <li>
+                    <h4><a href="">Google Maps</a></h4>
+                </li>
+                <li>
+                    <h2>Follow us on</h2>
+                </li>
+                <li><img src="./whatsappimg.png" alt=""><img src="./instaimg.jpeg" alt=""><img src="./facebookimg.jpeg" alt=""></li>
+        </ul>
+    </footer>
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("slideMenu");
+            menu.classList.toggle("active");
+        }
+        document.addEventListener("click", function(event) {
+            let menu = document.getElementById("slideMenu");
+            let menuBtn = document.querySelector(".menu-btn");
+            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menu.classList.remove("active");
+            }
+        });
+        const images = [
+            "./CMRU-OMBR-CAMPUS-1.webp",
+            "./CMRU-HRBR-CAMPUS-1.webp",
+            "./img3-1.webp"
+        ];
+
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+
+        function changeImage() {
+            slider.classList.add("slide-out");
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                slider.src = images[currentIndex];
+
+                slider.classList.remove("slide-out");
+                slider.classList.add("slide-in");
+            }, 1000); // Wait for the slide-out animation
+        }
+
+        setInterval(changeImage, 4000);
+
+        const testimonials = [
+            {
+                img: "./testimonalspic.webp",
+                name: "YOGESHKUMAR R",
+                position: "MBA - HR, <b>BYJU's</b>",
+                quote: `"I have received an opportunity to meet different kinds of people and learn a number of things. I am thankful to the Training & Placement cell for providing a platform to enhance my skills and an opportunity to showcase them."`
+            },
+            {
+                img: "./testimonalspic2.webp",
+                name: "Ayush S Uthappa",
+                position: "B.Tech - CS, <b>Infosys</b>",
+                quote: `"The faculty and placement team have been supportive throughout the journey. I am grateful for the opportunities I got at CMR University."`
+            },
+            {
+                img: "./testimonalspic3.webp",
+                name: "RAMESH K",
+                position: "MCA, <b>Wipro</b>",
+                quote: `"The curriculum and hands-on projects prepared me for the real-world challenges in the IT industry."`
+            },
+            {
+                img: "./testimonalspic4.webp",
+                name: "PRIYA D",
+                position: "MBA - Marketing, <b>TCS</b>",
+                quote: `"CMR University helped me develop strong communication and leadership skills that are crucial in the corporate world."`
+            }
+        ];
+        let currenttestIndex = 0;
+        const testimonialDiv = document.getElementById("testimonial");
+
+        function changeTestimonial() {
+            // Slide out the current testimonial
+            testimonialDiv.classList.add("slide-out");
+
+            setTimeout(() => {
+                // Update to the next testimonial
+                currenttestIndex = (currenttestIndex + 1) % testimonials.length;
+                testimonialDiv.innerHTML = `
+                    <img src="${testimonials[currenttestIndex].img}" alt="">
+                    <h1>${testimonials[currenttestIndex].name}</h1>
+                    <p>${testimonials[currenttestIndex].position}</p>
+                    <p>${testimonials[currenttestIndex].quote}</p>
+                `;
+
+                // Reset animation and slide in the new testimonial
+                testimonialDiv.classList.remove("slide-out");
+                testimonialDiv.classList.add("slide-in");
+            }, 1000); // Wait for slide-out to finish
+        }
+
+        setInterval(changeTestimonial, 4000);
+
+    </script>
+</body>
+
+</html>

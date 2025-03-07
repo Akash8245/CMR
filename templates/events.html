@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary-color: #01B0A9;
+            --primary-light: #dbf7f6;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+        
+        .page-header {
+            background-color: var(--primary-color);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .page-title {
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+        
+        .section-title {
+            position: relative;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.8rem;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .event-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.3);
+        }
+        
+        .event-image-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-image {
+            transform: scale(1.1);
+        }
+        
+        .no-image {
+            height: 100%;
+            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .event-date-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            z-index: 1;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .event-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .no-events {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 4rem;
+        }
+        
+        .no-events p {
+            margin: 0;
+        }
+        
+        .section-divider {
+            margin: 3rem 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="page-title">Events Calendar</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        
+        {% if upcoming_events %}
+        <div class="events-grid">
+            {% for event in upcoming_events %}
+            <div class="event-card">
+                <div class="event-image-container">
+                    {% if event.image %}
+                    <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
+                    {% else %}
+                    <div class="no-image">No Image Available</div>
+                    {% endif %}
+                    <div class="event-date-badge">{{ event.date }}</div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <p class="event-description">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-events">
+            <p>No upcoming events scheduled at this time. Stay tuned for exciting events coming soon!</p>
+        </div>
+        {% endif %}
+        
+        <div class="section-divider"></div>
+        
+        <h2 class="section-title">Past Events</h2>
+        
+        {% if past_events %}
+        <div class="events-grid">
+            {% for event in past_events %}
+            <div class="event-card">
+                <div class="event-image-container">
+                    {% if event.image %}
+                    <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-image">
+                    {% else %}
+                    <div class="no-image">No Image Available</div>
+                    {% endif %}
+                    <div class="event-date-badge">{{ event.date }}</div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <p class="event-description">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-events">
+            <p>No past events to display.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

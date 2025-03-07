@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-container {
+            margin: 20px auto;
+            width: 50%;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .login button:hover {
+            background-color: #0056b3;
+        }
+
+        #search {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .buttons {
+            margin: 20px;
+        }
+
+        .buttons button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        #colleges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .college {
+            display: block;
+            padding: 15px;
+            margin: 10px;
+            width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        #colleges img {
+            width: 98%;
+            height: 180px;
+        }
+
+        #colleges h3 a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #colleges h3 a:hover {
+            text-decoration: underline;
+        }
+
+        #colleges p {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+        }
+
+        #colleges p a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .college:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @media only screen and (max-width: 550px) {
+            .buttons button {
+                padding: 12px 10px;
+            }
+
+            nav .hide {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="buttons">
+            <button onclick="filterCategory('all')">All categories</button>
+            <button onclick="filterCategory('UG')">Under Graduate</button>
+            <button onclick="filterCategory('PG')">Post Graduate</button>
+            <button onclick="filterCategory('PU')">Pre University</button>
+        </div>
+        <div class="login">
+            <button><a href="{% url 'student_login' %}">Login</a></button>
+            <button><a href="{% url 'student_signup' %}">Sign UP</a></button>
+        </div>
+    </nav>
+    <h1>Find Your College</h1>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for a college...">
+    </div>
+    <div id="colleges">
+        <div class="college" data-category="UG">
+            <img src="/static/kristu.jpg" alt="">
+            <h3><a href="/kjc/">Kristu Jayanti College</a></h3>
+            <p><a href="/kjc/">Kristu Jayanti College (popularly known as KJC) was established in 1999. Kristu Jayanti
+                    College is a private-autonomous institution located in Bangalore, Karnataka. The college is
+                    affiliated with Bengaluru North University and is accredited by NAAC with an 'A++' Grade.</a></p>
+        </div>
+        <a href="./home.html">
+            <div class="college" data-category="PG">
+                <img src="/static/cmr_index.jpg" alt="">
+                <h3><a href="/cmr/">CMR University</a></h3>
+                <p><a href="/cmr">CMR University Bangalore is a private university that was established under Act 45. It
+                        is located in Bangalore and was established in 2013. The university is ranked 10 by the Green
+                        Institutional Ranking as the Sustainable Institution of India for 2022 and is ISO certified. CMR
+                        University has been ranked 2 in the Emerging Engineering Institutes Research Capability category
+                        at the Times All India Engineering Institutes Ranking Survey 2024.</a></p>
+            </div>
+        </a>
+        <div class="college" data-category="PG">
+            <img src="/static/mvjcollege.webp" alt="">
+            <h3><a href="/mvj/">MVJ College</a></h3>
+            <p><a href="/mvj/">MVJ College of Engineering was established in 1982 as the flagship institution of the
+                    Venkatesha Education Society to impart education in engineering, management, and beyond. MVJCE’s
+                    15-acre campus in Whitefield, Bangalore, bears state-of-the-art infrastructure that creates an
+                    environment for progressive learning and development.</a></p>
+        </div>
+        <div class="college" data-category="PU">
+            <img src="/static/stjoseph.avif" alt="">
+            <h3><a href="">St Joseph University</a></h3>
+            <p><a href="">St Josephs University is a Jesuit university at the heart of Bengaluru, the silicon city of
+                    India. Established in 1882 by Paris Foreign Mission Fathers, the management of the college was
+                    handed over to the Jesuit order (Society of Jesus) in 1937. The college was first affiliated with
+                    the University of Madras and later with the Mysore and Bangalore universities. In 1986, St Joseph’s
+                    College became the first affiliated college in Karnataka to offer postgraduate programmes. In 1988,
+                    it became the first college in Karnataka to get a Research Centre, and in 2005, it was one of five
+                    colleges in Karnataka that was awarded academic autonomy. </a></p>
+        </div>
+        <div class="college" data-category="UG">
+            <img src="/static/rvcollege.jpg" alt="">
+            <h3><a href="">RV College</a></h3>
+            <p><a href="">RV College of Engineering Bangalore is a self-financing engineering college managed by the
+                    Rashtreeya Sikshana Samithi Trust. RVCE is affiliated with Visvesvaraya Technological University and
+                    accredited by the NBA. The college is approved by AICTE and the Government of Karnataka. Located 13
+                    km from the heart of Bangalore (also known as the Silicon Valley of India) on Mysore Road. RVCE has
+                    ranked 99 in the Engineering category of NIRF Rankings 2024.</a></p>
+        </div>
+        <div class="college" data-category="PG">
+            <img src="/static/presidency.jpeg" alt="">
+            <h3><a href="">Presidency college</a></h3>
+            <p><a href=""></a>Presidency University, founded in 2015, is a part of the Presidency Group of Institutions.
+                It is dedicated to innovation and research-oriented teaching methodologies and offers a contemporary
+                curriculum that is industry-friendly and meaningful.</p>
+        </div>
+        <div class="college" data-category="PU">
+            <img src="/static/trillium.webp" alt="">
+            <h3><a href="">Trillium College</a></h3>
+            <p><a href="">At Trillium Public School, we uphold the values of faith, knowledge, compassion, and
+                    excellence. Our curriculum is designed to integrate rigorous academic standards with Islamic
+                    teachings, promoting a balanced growth that encompasses character development, critical thinking,
+                    and a deep understanding of core Islamic principles.</a></p>
+        </div>
+        <div class="college" data-category="UG">
+            <img src="/static/ramaincollege.jpg" alt="">
+            <h3><a href="">Ramaiah College
+                </a></h3>
+            <p><a href="">Ramaiah Institute of Technology Bangalore is ranked 21st by NIRF 2024 under the Architecture
+                    and Planning category, 75th under the Engineering category by NIRF 2024, and 5th by India Today 2024
+                    under the Engineering (Private) category. Ramaiah Institute of Technology is an autonomous institute
+                    which is affiliated with the Visvesvaraya Technological University. The college is approved by
+                    AICTE, New Delhi, and the Government of Karnataka. MSRIT is accredited by the NBA and with an A
+                    Grade by NAAC. Established in M S R Nagar, Bangalore, this reputed college was established in
+                    1962.</a></p>
+        </div>
+        <div class="college" data-category="PU">
+            <img src="/static/williams.jpg" alt="">
+            <h3><a href="">Williams College</a></h3>
+            <p><a href="">Williams Educational Trust was founded on 6th December 2005, by Late Mr. M Sulaiman, a great
+                    visionary with a strong passion for promoting contemporary education for the future generations. Hon
+                    Secretary Mrs.Jameela S and Late Mrs. Zainabi Sulaiman are the pillars of the institution. With the
+                    objective of guiding students to a prosperous and meaningful career in life, the first campus was
+                    inaugurated in Jayanagar on June 2007 and it was named as Williams Degree College.</a></p>
+        </div>
+        <div class="college" data-category="UG">
+            <img src="/static/mount.jpg" alt="">
+            <h3><a href="">Mount Carmel</a></h3>
+            <p><a href="">Mount Carmel College is the forerunner of holistic education envisioning the transformation of
+                    students to professionals. We focus on providing students with a conducive environment merged with
+                    state-of-the-art facilities and guidance from esteemed lecturers in the pursuit of humanising each
+                    student to participate in society as a responsible citizen, dynamic professional, and empathetic
+                    human. Our visionary endeavour, envisaged and promoted by our foundress, Mother Teresa of St. Rose
+                    of Lima, is to bask in the light of a “Civilization of love”, i.e., the Kingdom of God by imparting
+                    knowledge and civilization.</a></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#search').on('input', function () {
+                let value = $(this).val().toLowerCase();
+                $('.college').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().includes(value));
+                });
+            });
+        });
+
+        function filterCategory(category) {
+            if (category === 'all') {
+                $('.college').show();
+            } else {
+                $('.college').hide();
+                $('.college[data-category="' + category + '"]').show();
+            }
+        }
+    </script>
+</body>
+
+</html>
