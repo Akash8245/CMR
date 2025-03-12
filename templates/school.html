@@ -150,7 +150,7 @@
             display: none;
             position: fixed;
             top: 44px;
-            left: -350px;
+            left: -370px;
             width: 300px;
             height: 100vh;
             background: white;
@@ -319,6 +319,7 @@
         }
         .imageees h3{
             width: 100%;
+            height: 50px;
         }
         .imageees a{
             color: #2C3E50;
@@ -604,75 +605,95 @@
         <div></div>
     </nav>
     <div class="navigations">
-        <div class="nav-item"><div class="abbu">About CMR <img src="/static/downarrow.svg" width="10" alt=""></div>
+        <div class="nav-item">
+            <div class="abbu">About CMR <img src="/static/downarrow.svg" width="10" alt=""></div>
             <ul class="dropdown">
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'school' %}">Schools</a></li>
             </ul>
         </div>
-        <div class="nav-item"><div class="abbu"><a href="./hostel.html">Hostel</a></div>
+        <div class="nav-item">
+            <div class="abbu"><a href="{% url 'hostel' %}">Hostel</a></div>
         </div>
-        <div class="nav-item"><div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
+        <div class="nav-item">
+            <div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
             <ul class="dropdown">
-                <li><a href="./school_arch.html">School of Architecture</a></li>
-                <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
-                <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
-                <li><a href="./school_mgnt.html">School of Management</a></li>
-                <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
-                <li><a href="./school_legal.html">School of Legal Studies</a></li>
-                <li><a href="./school_libral.html">School of Liberal Studies</a></li>
+                <li><a href="{% url 'school_arch' %}">School of Architecture</a></li>
+                <li><a href="{% url 'school_eco' %}">School of Economics and Commerce</a></li>
+                <li><a href="{% url 'school_eng' %}">School of Engineering and Technology</a></li>
+                <li><a href="{% url 'school_legal' %}">School of Management</a></li>
+                <li><a href="{% url 'school_libral' %}">School of Science & Computer Studies</a></li>
+                <li><a href="{% url 'school_mgnt' %}">School of Legal Studies</a></li>
+                <li><a href="{% url 'school_sscs' %}">School of Liberal Studies</a></li>
             </ul>
         </div>
-        <div class="nav-item"><div class="abbu"><a href="./leadership.html">Leadership</a></div>
+        <div class="nav-item">
+            <div class="abbu"><a href="{% url 'leadership' %}">Leadership</a></div>
         </div>
-       
-        <div class="nav-item"><div class="abbu">Faculty <img src="/static/downarrow.svg" width="10" alt=""></div>
+        <div class="nav-item">
+            <div class="abbu">Faculty <img src="/static/downarrow.svg" width="10" alt=""></div>
             <ul class="dropdown">
                 <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
                 <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
                 <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
             </ul>
         </div>
-        <div class="nav-item"><div class="abbu"><a href="{% url 'campus_map' %}">Campus Tour</a></div>
+        <div class="nav-item">
+            <div class="abbu"><a href="{% url 'campus_map' %}">Campus Tour</a></div>
         </div>
-        <div class="nav-item"><div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        <div class="nav-item">
+            <div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        </div>
+        <div class="nav-item">
+            <div class="abbu"><a href="{% url 'student_profile' %}">Profile</a></div>
         </div>
     </div>
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
     <div class="slide-menu" id="slideMenu">
         <button class="close-btn" onclick="toggleMenu()">✖</button>
-            <div class="menu-item"><div class="abbu">About CMR <img src="/static/downarrow.svg" width="10" alt=""></div>
-                <ul class="dropdown">
-                    <li><a href="./aboutus.html">About Us</a></li>
-                    <li><a href="./schools.html">Schools</a></li>
-                </ul>
-            </div>
-            <div class="menu-item"><div class="abbu"><a href="./hostel.html">Hostel</a></div>
-            </div>
-            <div class="menu-item"><div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
-                <ul class="dropdown">
-                    <li><a href="./school_arch.html">School of Architecture</a></li>
-                    <li><a href="./school_eco.html">School of Economics and Commerce</a></li>
-                    <li><a href="./school_eng.html">School of Engineering and Technology</a></li>
-                    <li><a href="./school_mgnt.html">School of Management</a></li>
-                    <li><a href="./school_sscs.html">School of Science & Computer Studies</a></li>
-                    <li><a href="./school_legal.html">School of Legal Studies</a></li>
-                    <li><a href="./school_libral.html">School of Liberal Studies</a></li>
-                </ul>
-            </div>
-            <div class="menu-item"><div class="abbu"><a href="./leadership.html">Leadership</a></div>
-            </div>
-            <div class="menu-item"><div class="abbu">Faculty <img src="/static/downarrow.svg" width="10" alt=""></div>
-                <ul class="dropdown">
-                    <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
-                    <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
-                    <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
-                </ul>
-            </div>
-            <div class="menu-item"><div class="abbu"><a href="">Campus Tour</a></div>
-            </div>
-            <div class="menu-item"><div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
-            </div>
+        <div class="menu-item">
+            <div class="abbu">About CMR <img src="/static/downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'school' %}">Schools</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="{% url 'hostel' %}">Hostel</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu">Schools <img src="/static/downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="{% url 'school_arch' %}">School of Architecture</a></li>
+                <li><a href="{% url 'school_eco' %}">School of Economics and Commerce</a></li>
+                <li><a href="{% url 'school_eng' %}">School of Engineering and Technology</a></li>
+                <li><a href="{% url 'school_legal' %}">School of Management</a></li>
+                <li><a href="{% url 'school_libral' %}">School of Science & Computer Studies</a></li>
+                <li><a href="{% url 'school_mgnt' %}">School of Legal Studies</a></li>
+                <li><a href="{% url 'school_sscs' %}">School of Liberal Studies</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="{% url 'leadership' %}">Leadership</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu">Faculty <img src="/static/downarrow.svg" width="10" alt=""></div>
+            <ul class="dropdown">
+                <li><a href="./school_arch.html#faculty">SOA Faculty</a></li>
+                <li><a href="./school_sscs.html#faculty">SSCS Faculty</a></li>
+                <li><a href="./school_mgnt.html#faculty">SOM Faculty</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="{% url 'campus_map' %}">Campus Tour</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="https://www.cmr.edu.in/placement-cell/">Placement Cell</a></div>
+        </div>
+        <div class="menu-item">
+            <div class="abbu"><a href="{% url 'student_profile' %}">Profile</a></div>
+        </div>
+
     </div>
         <div class="titleschool">
             Schools (SSCS)
@@ -728,7 +749,7 @@
             </div>
         </div>
         <div class="dwonbroucher">
-            <div class="Download"><a href="./SOM-Flyer.pdf" download="C:\Users\moham\OneDrive\Desktop">Download Brocher</a></div>
+            <div class="Download"><a href="/static/SOM-Flyer.pdf" download="/Users/akash">Download Brocher</a></div>
         </div>
         <footer>
             <ul>

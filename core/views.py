@@ -136,9 +136,6 @@ def student_profile(request):
 
     return render(request, "student_profile.html", {"student": student, "upcoming_events": upcoming_events})
 
-
-
-
 def campus_map(request):
     return render(request, 'map.html')
 
@@ -174,3 +171,27 @@ def school(request):
 
 def hostel(request):
     return render(request,"hostel.html")
+
+def leadership(request):
+    return render(request,"leadership.html")
+
+def school_arch(request):
+    return render(request,"school_arch.html")
+
+def school_eco(request):
+    return render(request,"school_eco.html")
+
+def school_eng(request):
+    return render(request,"school_eng.html")
+
+def school_legal(request):
+    return render(request,"school_legal.html")
+
+def school_libral(request):
+    return render(request,"school_libral.html")
+
+def school_mgnt(request):
+    return render(request,"school_mgnt.html")
+
+def school_sscs(request):
+    return render(request,"school_sscs.html")

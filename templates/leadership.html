@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSCS</title>
     <!-- <link rel="stylesheet" href="./styleschool.css">
-    <link rel="stylesheet" href="./overview.css"> -->
+    <link rel="stylesheet" href="./leadership.css"> -->
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        nav{
+
+        nav {
             position: sticky;
             top: 0px;
             background-color: #5b98d5;
@@ -22,10 +23,12 @@
             color: white;
             z-index: 10;
         }
-        nav img{
-           margin:10px ;
+
+        nav img {
+            margin: 10px;
         }
-        nav ul{
+
+        nav ul {
             margin: 10px;
             display: flex;
             justify-content: center;
@@ -33,23 +36,27 @@
             gap: 34px;
             margin-right: 20px;
         }
-        nav ul li{
+
+        nav ul li {
             list-style: none;
             font-size: 20px;
         }
-        nav a{
+
+        nav a {
             color: white;
             text-decoration: none;
         }
-        .navigations{
+
+        .navigations {
             background-color: rgb(222 222 222);
             display: flex;
             justify-content: center;
             align-items: center;
-                    position: sticky;
-                    top: 54px;
-                    z-index: 1000;
+            position: sticky;
+            top: 54px;
+            z-index: 1000;
         }
+
         .nav-item {
             display: inline-block;
             position: relative;
@@ -57,17 +64,21 @@
             color: black;
             cursor: pointer;
         }
-        .nav-item .abbu a{
+
+        .nav-item .abbu a {
             color: black;
             text-decoration: none;
         }
-        .nav-item a{
+
+        .nav-item a {
             color: white;
             text-decoration: none;
         }
-        .nav-item a:hover{
+
+        .nav-item a:hover {
             text-decoration: underline;
         }
+
         .dropdown {
             display: none;
             position: absolute;
@@ -79,23 +90,27 @@
             left: 0;
             width: 250px;
             z-index: 1000;
-        
+
         }
+
         .dropdown li {
             padding: 10px;
             color: white;
         }
+
         .dropdown li:hover {
             background-color: #555;
             text-decoration: underline;
         }
+
         .nav-item:hover .dropdown {
             display: block;
         }
-        
-        .nav-item a:hover{
+
+        .nav-item a:hover {
             text-decoration: underline;
         }
+
         .menu-btn {
             display: none;
             position: fixed;
@@ -109,17 +124,21 @@
             border-radius: 5px;
             z-index: 2000;
         }
-        .menu-item .abbu a{
+
+        .menu-item .abbu a {
             color: black;
             text-decoration: none;
         }
-        .menu-item a{
+
+        .menu-item a {
             color: white;
             text-decoration: none;
         }
-        .menu-item a:hover{
+
+        .menu-item a:hover {
             text-decoration: underline;
         }
+
         .menu-item .dropdown {
             display: none;
             position: absolute;
@@ -132,21 +151,25 @@
             width: 250px;
             z-index: 1000;
         }
+
         .menu-item .dropdown li {
             padding: 10px;
             color: white;
         }
+
         .dropdown li:hover {
             background-color: #555;
             text-decoration: underline;
         }
+
         .menu-item:hover .dropdown {
             display: block;
         }
-        
-        .menu-item a:hover{
+
+        .menu-item a:hover {
             text-decoration: underline;
         }
+
         .slide-menu {
             display: none;
             position: fixed;
@@ -161,9 +184,11 @@
             overflow-y: auto;
             z-index: 20;
         }
+
         .slide-menu.active {
             left: 0;
         }
+
         .close-btn {
             position: absolute;
             top: 10px;
@@ -173,6 +198,7 @@
             background: none;
             border: none;
         }
+
         .menu-item {
             top: 30px;
             padding: 10px;
@@ -180,21 +206,26 @@
             border-bottom: 1px solid #ddd;
             position: relative;
         }
+
         .sub-menu {
             display: none;
             padding-left: 15px;
             background: #f4f4f4;
         }
+
         .menu-item:hover .sub-menu {
             display: block;
         }
-        .aboutschool h2{
-            color: #00B6AD ;
+
+        .aboutschool h2 {
+            color: #00B6AD;
         }
-        .imgage img{
+
+        .imgage img {
             width: 100%;
         }
-        .titleschool{
+
+        .titleschool {
             background-color: #2C3E50;
             width: 100%;
             color: white;
@@ -204,7 +235,8 @@
             height: 30px;
             margin: 5px 0px;
         }
-        .aboutschool{
+
+        .aboutschool {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -213,20 +245,24 @@
             height: 30px;
             margin: 5px 0px;
         }
-        .aboutschool ul{
+
+        .aboutschool ul {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
         }
-        .aboutschool ul li{
-            list-style:none;
+
+        .aboutschool ul li {
+            list-style: none;
         }
-        .aboutschool ul li a{
+
+        .aboutschool ul li a {
             color: black;
             text-decoration: none;
         }
-        .detailabout{
+
+        .detailabout {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -234,17 +270,20 @@
             margin: 20px 0px;
             width: 100%;
         }
-        .detailabout h2{
+
+        .detailabout h2 {
             margin: 30px 0px;
             color: #00B6AD;
         }
-        .detailabout p{
+
+        .detailabout p {
             width: 700px;
             font-size: 18px;
             line-height: 24px;
             font-weight: lighter;
         }
-        .widthdetail{
+
+        .widthdetail {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -253,26 +292,31 @@
             width: 100%;
             background-color: #ECF0F1;
         }
-        .fixeddiv{
+
+        .fixeddiv {
             width: 200px;
             position: fixed;
             right: 0px;
             z-index: 1100;
             top: 52%;
         }
-        .fixeddiv .fixedthings:nth-child(odd){
+
+        .fixeddiv .fixedthings:nth-child(odd) {
             background-color: #05B1A7;
             color: white;
         }
-        .fixeddiv .fixedthings:nth-child(3){
+
+        .fixeddiv .fixedthings:nth-child(3) {
             background-color: #036059;
             color: white;
         }
-        .fixeddiv .fixedthings:nth-child(even){
+
+        .fixeddiv .fixedthings:nth-child(even) {
             background-color: #FF0;
             color: black
         }
-        .fixedthings{
+
+        .fixedthings {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -281,97 +325,116 @@
             text-align: center;
             font-weight: 400;
         }
-        .keyfeatures{
+
+        .keyfeatures {
             width: 700px;
             line-height: 30px;
             padding: 10px 0px
         }
-        .keyfeatures h2{
+
+        .keyfeatures h2 {
             color: #00B6AD;
             margin: 30px 0px;
         }
-        .keyfeatures p{
+
+        .keyfeatures p {
             width: 700px;
             font-size: 18px;
             line-height: 40px;
             font-weight: lighter;
         }
-        .pogrammeugpg h2{
+
+        .pogrammeugpg h2 {
             margin: 30px 0px;
             color: #00B6AD;
             text-decoration: underline dotted;
         }
-        .pogrammeugpg{
+
+        .pogrammeugpg {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        .imageees{
+
+        .imageees {
             display: grid;
             justify-content: center;
             align-items: center;
-           grid-template-columns: 300px 300px  300px ;
-           grid-template-rows: 250px  250px  250px ;
+            grid-template-columns: 300px 300px 300px;
+            grid-template-rows: 250px 250px 250px;
         }
-        .img1{
+
+        .img1 {
             width: 500px;
-           
+
         }
-        .imageees h3{
+
+        .imageees h3 {
             width: 300px;
         }
-        .imageees a{
+
+        .imageees a {
             color: #2C3E50;
             text-decoration: none;
         }
-        .imageees a:hover{
+
+        .imageees a:hover {
             text-decoration: underline;
         }
-        .ugpg{
+
+        .ugpg {
             display: flex;
             gap: 30px;
         }
-        .pogrammeugpg ul li{
+
+        .pogrammeugpg ul li {
             list-style: none;
             line-height: 30px;
         }
-        .ugpg h3{
-            color:#2C3E50;
+
+        .ugpg h3 {
+            color: #2C3E50;
             text-decoration: underline;
             margin: 20px;
             text-align: center;
         }
-        .faculty h2{
+
+        .faculty h2 {
             margin: 30px 0px;
             text-align: center;
             color: #00B6AD;
             text-decoration: underline dotted;
         }
-        .faculty{
+
+        .faculty {
             margin: 30px 0px;
             display: flex;
             background-color: #ECF0F1;
             flex-direction: column;
         }
-        .faculty ul li{
+
+        .faculty ul li {
             text-decoration: none;
             cursor: pointer;
             list-style: none;
             line-height: 50px;
         }
-        .facdetails{
+
+        .facdetails {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 40px;
         }
-        .dwonbroucher{
+
+        .dwonbroucher {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .Download{
+
+        .Download {
             background-color: #00B6AD;
             width: 200px;
             height: 50px;
@@ -385,251 +448,292 @@
             color: white;
             text-decoration: none;
         }
-        footer{
+
+        footer {
             display: flex;
             justify-content: center;
             background-color: #40474D;
             color: white;
             gap: 18px;
         }
-        footer ul{
+
+        footer ul {
             margin-left: 30px;
         }
-        footer ul h3{
+
+        footer ul h3 {
             color: #ead722;
             margin-top: 20px;
             margin-bottom: 30px;
             text-align: center;
         }
-        footer ul li{
+
+        footer ul li {
             list-style: none;
             font-weight: lighter;
             margin: 30px 10px;
         }
-        footer img{
+
+        footer img {
             width: 30px;
             margin-top: -20px;
         }
-        footer h4{
+
+        footer h4 {
             margin-top: 0px;
         }
-        footer ul a{
+
+        footer ul a {
             color: white;
             text-decoration: none;
         }
-        footer ul a:hover{
-            text-decoration: underline;}
-        @media only screen and (max-width: 850px ){
-            .navigations{
+
+        footer ul a:hover {
+            text-decoration: underline;
+        }
+
+        .leader {
+            padding: 10px 0px;
+            background-color: #ECF0F1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .descriptionleader {
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .descriptionleader p {
+            width: 500px;
+        }
+
+        .titleschool {
+            margin-bottom: 20px;
+        }
+
+        .leader:nth-child(even) {
+            background-color: #2C3E50;
+        }
+
+        .leader:nth-child(even) h1 {
+            color: #FFCF0A;
+            text-decoration: underline #FFCF0A;
+        }
+
+        .leader:nth-child(even) p {
+            color: white;
+        }
+
+        .leader:nth-child(odd) h1 {
+            color: #2981BA;
+            text-decoration: underline #2981BA;
+        }
+
+        @media only screen and (max-width: 840px) {
+            .descriptionleader {
+                flex-direction: column;
+            }
+
+            .descriptionleader p {
+                width: 80%;
+                font-size: 15px
+            }
+
+            .leader h1 {
+                text-align: center;
+            }
+        }
+
+        @media only screen and (max-width: 320px) {
+            .descriptionleader img {
+                width: 90%;
+            }
+
+            .leader h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 850px) {
+            .navigations {
                 display: none;
             }
-            nav div{
+
+            nav div {
                 display: none;
             }
-            nav ul li{
+
+            nav ul li {
                 font-size: 12px;
                 gap: 10px;
             }
-            .detailabout p{
+
+            .detailabout p {
                 width: 90%;
             }
-            .keyfeatures{
+
+            .keyfeatures {
                 width: 97%;
                 padding-left: 5px;
             }
-            .keyfeatures p{
+
+            .keyfeatures p {
                 width: 98%;
             }
-            .vision img{
-                height: auto;
-            }
         }
-        @media only screen and (max-width: 1065px ){
-            .facdetails{
+
+        @media only screen and (max-width: 1065px) {
+            .facdetails {
                 flex-direction: column;
                 text-align: center;
             }
         }
-        @media only screen and (max-width: 790px ){
-            nav img{
+
+        @media only screen and (max-width: 790px) {
+            nav img {
                 width: 30px;
             }
-            .ugpg{
+
+            .ugpg {
                 flex-direction: column;
             }
-            footer{
+
+            footer {
                 font-size: 12px;
             }
-            .navigations{
+
+            .navigations {
                 display: none;
             }
-            .menu-btn{
+
+            .menu-btn {
                 display: block;
             }
+
             .slide-menu {
                 display: block;
             }
-            nav ul li{
+
+            nav ul li {
                 font-size: 14px;
             }
-            nav img{
+
+            nav img {
                 width: 70px;
             }
         }
-        
-        @media only screen and (max-width: 700px ){
-            .fixeddiv{
+
+        @media only screen and (max-width: 700px) {
+            .fixeddiv {
                 display: none;
             }
-            nav div{display: none;}
-            nav ul li{
+
+            nav div {
+                display: none;
+            }
+
+            nav ul li {
                 font-size: 12px;
             }
         }
-        
-        @media only screen and (max-width: 555px ){
-            nav ul li{
+
+        @media only screen and (max-width: 555px) {
+            nav ul li {
                 font-size: 09px;
             }
+
             nav ul {
                 gap: 7px;
             }
         }
-        
-        @media only screen and (max-width: 540px ){
-            footer{
+
+        @media only screen and (max-width: 540px) {
+            footer {
                 flex-direction: column;
             }
         }
-        @media only screen and (max-width: 490px ){
-            footer ul{
+
+        @media only screen and (max-width: 490px) {
+            footer ul {
                 margin-left: 0px;
             }
-            footer ul li{
+
+            footer ul li {
                 margin: 25px 0px;
                 margin-left: 10px;
             }
         }
-        
-        @media only screen and (max-width: 435px ){
-            nav ul li{
+
+        @media only screen and (max-width: 435px) {
+            nav ul li {
                 font-size: 10px;
             }
+
             nav ul {
                 gap: 7px;
             }
-            .aboutschool{
+
+            .aboutschool {
                 font-size: 10px;
             }
-            .aboutschool ul{
+
+            .aboutschool ul {
                 gap: 2px;
             }
-            .detailabout p{
+
+            .detailabout p {
                 font-size: 10px;
                 line-height: 10px;
             }
-            .keyfeatures p{
+
+            .keyfeatures p {
                 font-size: 10px;
                 line-height: 25px;
             }
-            .faculty ul li{
+
+            .faculty ul li {
                 font-size: 12px;
             }
-            .ugpg{
+
+            .ugpg {
                 font-size: 12px;
             }
-            .ug{
+
+            .ug {
                 text-align: center;
             }
-            .detailabout h2{
+
+            .detailabout h2 {
                 margin: 10px 0px;
                 margin-top: 2px;
             }
+
             .slide-menu {
                 width: 80%;
             }
         }
-        @media only screen and (max-width: 330px ){
-            nav ul li{
+
+        @media only screen and (max-width: 330px) {
+            nav ul li {
                 font-size: 8px;
             }
         }
-        @media only screen and (max-width: 280px ){
-            .aboutschool{
+
+        @media only screen and (max-width: 280px) {
+            .aboutschool {
                 font-size: 8px;
             }
-            nav ul li{
+
+            nav ul li {
                 font-size: 6px;
             }
         }
-        .thoss{
-            background-color:#ECF0F1 ;
-        }
-        .vision{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0px;
-            background-color: #2981BA;
-        }
-        .vision img{
-            width: 100%;
-            height: auto;
-        }
-        .logo{
-            background-color: #ECF0F1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            gap: 20px;
-        }
-        .logodetail{
-            width: 90%;
-        }
-        .logodetail h2{
-            margin-bottom: 20px;
-        }
-        .logocmr{
-            color: #2981BA ;
-            text-align: center;
-            padding-top:  10px;
-        }
-        .swanlogo{
-            background-color: #ECF0F1;
-        }
-        .widthadjust{
-            height: 400px;
-            width: 80vw;
-        }
-        @media only screen and (max-width: 690px ){
-            .logoo img{
-                width: 150px;
-            }
-        }
-        @media only screen and (max-width: 850px){
-            .imgage img{
-                height: auto;
-            }
-        }
-        @media only screen and (max-width: 680px ){
-            .logo{
-                flex-direction: column;
-                font-size: 12px;
-            }
-            .logoo{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .logoo img{
-                width: 90%;
-                margin-top: 20px;
-            }
-        }
-        
-        
-        
     </style>
 </head>
 
@@ -736,22 +840,8 @@
         </div>
 
     </div>
-    <div class="imgage">
-        <img src="/static/banner.png" height="500" alt="">
-    </div>
     <div class="titleschool">
-        About CMRU
-    </div>
-    <div class="aboutschool">
-        <ul>
-            <li><a href="#overview">OverView |</a></li>
-            <li><a href="#ethos">Our Ethos |</a></li>
-            <li><a href="#vision">Vision |</a></li>
-            <li>
-                <a href="#mission">Mission |</a>
-            </li>
-            <li><a href="#logo">CMR Logo |</a></li>
-        </ul>
+        LEADERSHIP
     </div>
     <div class="fixeddiv">
         <div class="fixedthings">
@@ -767,84 +857,55 @@
             Commencement
         </div>
     </div>
-    <div class="detailabout" id="overview">
-        <h2>Overview</h2>
-        <p>
-
-            CMR University (CMRU), Bangalore is a private university in the state of Karnataka, established under the
-            Act 45 of 2013. The University fosters creative communities where new ideas are nurtured, new discoveries
-            made, and new creations shared. CMRU works with the vision “To nurture creative thinkers who will drive
-            positive global change.” CMR University aims to promote and undertake the advancement of university
-            education across a plethora of disciplines viz architecture, design, engineering, law, management, economics
-            & commerce, social sciences & humanities, education, and science studies. The University also aims to equip
-            students with the required skills and knowledge to pursue a successful career in their chosen field of
-            study.
-        </p>
-        <br>
-        <p> These programmes are a result of strategic collaborations with a vast network of industry experts,
-            artists, technicians, and programmers with invaluable inputs from various industry and placement
-            partners.</p>
-        <br>
-        <p>The programmes emphasize an experiential and practical approach to teaching and learning, and are
-            delivered by professionals with vast experience in their respective fields.. Students gain the required
-            solid grounding in order to specialize and build a successful career in their chosen field of Media,
-            Entertainment and Technology.
-        </p>
-    </div>
-    <div class="thoss detailabout" id="ethos">
-        <h2>Ethos</h2>
-        <p>We believe that creativity is the key competence required to excel in this complex world, which is why
-            independent thinkers, product leaders, artists, designers and innovators are the need of the hour. Our
-            students learn creative concepts and design thinking regardless of their area of study. Students are
-            evaluated on the basis of real-life skills such as teamwork, presentation, research and initiative. CMR
-            University Bangalore fosters creative communities, where new ideas can be nurtured, new discoveries can be
-            made and new creations can be shared.</p>
-        <p> These programmes are a result of strategic collaborations with a vast network of industry experts,
-            artists, technicians, and programmers with invaluable inputs from various industry and placement
-            partners.</p>
-        <br>
-        <p>The programmes emphasize an experiential and practical approach to teaching and learning, and are
-            delivered by professionals with vast experience in their respective fields.. Students gain the required
-            solid grounding in order to specialize and build a successful career in their chosen field of Media,
-            Entertainment and Technology.
-        </p>
-
-    </div>
-    <div class="vision" id="vision">
-        <img src="/static/vision-img-1.jpg" alt="">
-    </div>
-    <div class="detailabout mission" id="mission">
-        <h2>Mission</h2>
-        <p>To offer multi, inter and cross-disciplinary modular programmes with technology-enabled teaching-learning
-            processes.
-            To focus on research-led teaching and learning in an innovative and interdisciplinary learning environment;
-            to create critical thinkers.
-            To create leaders for knowledge based economy, with ethical demands of a society base.</p>
-    </div>
-    <div class="swanlogo">
-    <h2 class="logocmr">CMR LOGO</h2>
-    <div class="logo" id="logo">
-        <div class="logoo">
-            <img src="/static/logo-300x202.jpg" alt="">
-        </div>
-        <div class="logodetail">
-            <h2 style="color: #05B1A7;">SWAN TAKING FLIGHT</h2>
-            <p>The CMR University logo is inspired by that of the CMR Jnanadhara Trust, the University’s promoting body.
-                The logo depicts a beautiful swan that is just about to take off from the waters, one that is reaching
-                for the skies.</p>
-
-            <br>
-            <p>The swan is the carrier of Goddess Saraswathi – the Goddess of Learning.
-
-             </p><p>   <br> is said that the Swan with its sensitive beak has the power of discrimination – an ability to
-                distinguish pure milk from a mixture of milk and water. The swan thus symbolizes discrimination between
-                right and wrong, good and evil or the eternal and the transient. It is this ability to acquire and apply
-                knowledge in a discerning manner, for the overall good of mankind, which closely aligns with the
-                University’s ethos.</p>
+    <div class="leader">
+        <h1>Dr. Sabitha Ramamurthy, Chancellor</h1>
+        <div class="descriptionleader">
+            <img src="/static/president.jpg" alt="">
+            <p>Dr. Sabitha Ramamurthy is a lady with a vision. She decided to pursue her father-in-law, Sri. Chikka
+                Muniyappa Reddy’s dream – a dream of educating the masses. The CMR Jnanadhara Trust was started in 1990
+                and Dr. Sabitha Ramamurthy took over as the President of the Trust. The Trust started the National
+                Junior School (now CMR National Public School). What was started as a modest school in a family-owned
+                orchard is now a full-fledged CBSE school that appends to its laurels every year. She did not cease her
+                hard work and efforts with this prestigious school, and is constantly envisioning the growth of her
+                educational empire.</p>
         </div>
     </div>
+    <div class="leader">
+        <h1>Dr.H.B.Raghavendra, Vice Chancellor</h1>
+        <div class="descriptionleader">
+            <img src="/static/VC-CMR-300x200.jpg" alt="">
+            <p>Prof. H B Raghavendra, is currently serving as Vice Chancellor of The CMR University, Bangalore. Earlier
+                he was Vice Chancellor of The NorthCap University Gurugram and Chandigarh University, Haryana. Also
+                served at Pandit Deendayal Petroleum University, Gandhinagar, Gujarat as Director and Director General.
+                He is having 35 years of experience in Teaching, Research and Governance. Prof. H B Raghavendra started
+                his career in 1983 and served in various capacities such as Professor, Head, Director School of
+                Technology, Director General and Vice Chancellor till date.
+
+                His academic record is excellent having distinction throughout during studies, recipient of degrees from
+                IITM, IISc and BITS, Pilani. He is a Civil Engineer by Training. He is recipient of many National and
+                International Scholarships during his student days instituted by GOI and the University of Singapore. He
+                is Fellow of Institution of Engineers and Association</p>
+        </div>
     </div>
-    <div class="dwonbroucher">
+    <div class="leader">
+        <h1>Dr. Praveen R, Registrar</h1>
+        <div class="descriptionleader">
+            <img src="/static/Dr.-Praveen-R..jpg" alt="">
+            <p>As the Registrar at CMR University, Dr. R. Praveen leads the academic and administrative functions of the
+                University. He ensures policy formulations, regulatory management and also oversees policy, systems and
+                process implementation. Processes and systems including student registration and enrollment, maintenance
+                of academic records, course and examination scheduling, classroom use, banner and degree audit systems,
+                etc. come under his control.
+
+                Dr. Praveen epitomizes the philosophy of a true academic. He is active in all three dimensions of
+                academia, namely research, teaching and service. An active researcher, he has numerous national and
+                international publications to his credit. He continually engages with the community through his
+                involvement with over 14 national and state level boards, committees and several professional bodies
+                including the All India Association of Educational Research, Council of Behavioral Scientists, Council
+                of Teacher Education, the Psycho-linguistic Association of India etc. </p>
+        </div>
+    </div>
+    <div class="dwonbroucher" id="download">
         <div class="Download"><a href="/static/SOM-Flyer.pdf" download="/Users/akash">Download Brocher</a>
         </div>
     </div>
@@ -868,22 +929,23 @@
             <li><a href="./school_libral.html">School of Liberal Studies</a></li>
         </ul>
         <ul>
-                <h3>ADMIN OFFICE</h3>
-                <li>#2, 3rd 'C' Cross, 6th 'A' Main</li>
-                <li>HRBR Layout, 2nd Block.</li>
-                <li>Kalyana Nagar,</li>
-                <li>
-                    <p>Bengaluru 560043, India</p>
-                </li>
-                <li>T: +91 8976543209</li>
-                <li>E: info@cmr.edu.in</li>
-                <li>
-                    <h4><a href="">Google Maps</a></h4>
-                </li>
-                <li>
-                    <h2>Follow us on</h2>
-                </li>
-                <li><img src="/static/whatsappimg.png" alt=""><img src="/static/instaimg.jpeg" alt=""><img src="/static/facebookimg.jpeg" alt=""></li>
+            <h3>ADMIN OFFICE</h3>
+            <li>#2, 3rd 'C' Cross, 6th 'A' Main</li>
+            <li>HRBR Layout, 2nd Block.</li>
+            <li>Kalyana Nagar,</li>
+            <li>
+                <p>Bengaluru 560043, India</p>
+            </li>
+            <li>T: +91 8976543209</li>
+            <li>E: info@cmr.edu.in</li>
+            <li>
+                <h4><a href="">Google Maps</a></h4>
+            </li>
+            <li>
+                <h2>Follow us on</h2>
+            </li>
+            <li><img src="./whatsappimg.png" alt=""><img src="./instaimg.jpeg" alt=""><img src="./facebookimg.jpeg"
+                    alt=""></li>
         </ul>
     </footer>
     <script>
@@ -891,7 +953,7 @@
             let menu = document.getElementById("slideMenu");
             menu.classList.toggle("active");
         }
-        document.addEventListener("click", function(event) {
+        document.addEventListener("click", function (event) {
             let menu = document.getElementById("slideMenu");
             let menuBtn = document.querySelector(".menu-btn");
             if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {

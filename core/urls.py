@@ -6,8 +6,9 @@ from django.urls import path
 from .views import event_list
 
 from .views import (
-    Home, student_signup, student_login,campus_map,Main,mvj_view,hostel,
-    teacher_signup, teacher_login, logout_view,student_profile,event_list,submit_review,kjc_view,about,school
+    Home, student_signup, student_login,campus_map,Main,mvj_view,hostel,leadership,
+    teacher_signup, teacher_login, logout_view,student_profile,event_list,submit_review,kjc_view,about,school,
+    school_arch,school_eco,school_eng,school_legal,school_libral,school_mgnt,school_sscs
 )
 
 urlpatterns = [
@@ -27,6 +28,16 @@ urlpatterns = [
     path("about/", about, name="about"),
     path("school/", school, name="school"),
     path("hostel/", hostel, name="hostel"),
+    path("leadership/", leadership, name="leadership"),
+
+    path("school_arch/", school_arch, name="school_arch"),
+    path("school_eco/", school_eco, name="school_eco"),
+    path("school_eng/", school_eng, name="school_eng"),
+    path("school_legal/", school_legal, name="school_legal"),
+    path("school_libral/", school_libral, name="school_libral"),
+    path("school_mgnt/", school_mgnt, name="school_mgnt"),
+    path("school_sscs/", school_sscs, name="school_sscs"),
+
 
 ]
 
