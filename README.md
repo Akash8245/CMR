@@ -50,3 +50,52 @@ A **web-based campus navigation system** designed to enhance user experience by 
 **📬 Contact**  
 For any queries, feel free to reach out!
 
+## 📦 How to Run Locally
+
+1. Clone the repo  
+   `git clone https://github.com/your-username/campus-navigation.git`
+
+2. Go into the project folder  
+   `cd campus-navigation`
+
+3. Create a virtual environment  
+   `python -m venv env`
+
+4. Activate the environment  
+   - On Windows: `env\Scripts\activate`  
+   - On Mac/Linux: `source env/bin/activate`
+
+5. Install dependencies  
+   `pip install -r requirements.txt`
+
+6. Run migrations
+   `python manage.py makemigrations`
+   `python manage.py migrate`
+
+7. Start the server  
+`python manage.py runserver`
+
+8. Open in browser  
+`http://127.0.0.1:8000/`
+
+## 🤝 Contributing
+
+- Fork the repo  
+- Make changes  
+- Submit a Pull Request  
+
+All contributions are welcome!
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+## 📬 Contact
+
+- Email: yourname@example.com  
+- GitHub: https://github.com/your-username  
+- LinkedIn: https://linkedin.com/in/your-profile  
+
+---
+
+**Built with ❤️ to help students navigate the campus with ease.**
